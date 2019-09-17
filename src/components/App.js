@@ -15,21 +15,19 @@ class App extends React.Component {
     };
   }
 
-  const onChangeType =()=>{
-    this.setState({
-        filters.type: 
-        }
-    })
+  onChangeType =(event)=>{
+    
       
     }
     
 
-  }
-  const onFindPetsClick=()=>{
-
+  
+  onFindPetsClick=(event)=>{
+    
   }
 
   render() {
+    
     return (
       <div className="ui container" style={{ width: "80%", margin: "5% auto" }}>
         <header>
@@ -38,7 +36,7 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters onChangeType={onChangeType} onFindPetsClick={onFindPetsClick} />
+              <Filters onChangeType={this.onChangeType} onFindPetsClick={this.onFindPetsClick} />
             </div>
             <div className="twelve wide column">
               <PetBrowser />
