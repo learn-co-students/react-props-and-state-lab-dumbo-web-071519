@@ -31,12 +31,16 @@ class App extends React.Component {
   };
 
   petFetch = pet => {
+    console.log("pet fetch")
     return fetch(`/api/pets${pet}`)
       .then(resp => resp.json())
       .then(data => {
-        this.setState({
-          pets: data
-        });
+        this.setState(
+          {
+            pets: data
+          },
+          () => console.log(this.state)
+        );
       });
   };
 
@@ -46,8 +50,22 @@ class App extends React.Component {
     return this.petFetch(species);
   };
 
+  onAdoptPet = id => {
+    console.log("on Adopt Pet");
+    this.setState({
+      pets: this.state.pets.map(pet => {
+        if (pet.id === id)
+          return {
+            ...pet,
+            isAdopted: true
+          };
+        else {
+          return pet;
+        }
+      })
+    });
+  };
   render() {
-    console.log(this.state.pets);
     return (
       <div className="ui container" style={{ width: "80%", margin: "5% auto" }}>
         <header>
@@ -62,7 +80,7 @@ class App extends React.Component {
               />
             </div>
             <div className="twelve wide column">
-              <PetBrowser Pets={this.state.pets} />
+              <PetBrowser pets={this.state.pets} onAdoptPet={this.onAdoptPet} />
             </div>
           </div>
         </div>
