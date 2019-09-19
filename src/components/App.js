@@ -27,29 +27,27 @@ class App extends React.Component {
         type: event.target.value
       }
     });
-    console.log(this.state.filters.type)
+    console.log(this.state.filters.type);
   };
 
-  sendPets=(pet)=>{
-    return pet
-  }
-  petFetch=(pet)=>{
+  petFetch = pet => {
     return fetch(`/api/pets${pet}`)
-    .then(resp => resp.json())
-    .then(data =>  this.sendPets(data))
-  }
-
-  onFindPetsClick = (event) => {
-    let species = this.state.filters.type
-    species === 'all' ? species = "" : species = ("?type="+species) 
-    return  this.petFetch(species)
-    
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({
+          pets: data
+        });
+      });
   };
 
-  
+  onFindPetsClick = event => {
+    let species = this.state.filters.type;
+    species === "all" ? (species = "") : (species = "?type=" + species);
+    return this.petFetch(species);
+  };
 
   render() {
-    
+    console.log(this.state.pets);
     return (
       <div className="ui container" style={{ width: "80%", margin: "5% auto" }}>
         <header>
@@ -64,7 +62,7 @@ class App extends React.Component {
               />
             </div>
             <div className="twelve wide column">
-              <PetBrowser Pets={this.sendPets} />
+              <PetBrowser Pets={this.state.pets} />
             </div>
           </div>
         </div>

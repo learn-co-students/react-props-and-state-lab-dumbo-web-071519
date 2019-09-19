@@ -9,10 +9,9 @@ class PetBrowser extends React.Component {
   }
   render() {
     return <div className="ui cards">
-      <Pet onAdoptPet={this.onAdoptPet} Pet={this.Pet} />
+      <Pet onAdoptPet={this.onAdoptPet} Pet={this.props.Pets} />
     </div>
   }
 }
 
 export default PetBrowser
-// pet={}
