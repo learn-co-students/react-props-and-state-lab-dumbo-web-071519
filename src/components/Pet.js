@@ -11,7 +11,7 @@ class Pet extends React.Component {
       <div className="card" key={pet.id}>
         <div className="content">
           <a className="header">
-            {pet.gender === "male" ? " ♀ " : " ♂ "}
+            {pet.gender === "female" ? " ♀ " : " ♂ "}
             {pet.name}
           </a>
           <div className="meta">
