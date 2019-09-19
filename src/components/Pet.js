@@ -2,6 +2,7 @@ import React from 'react'
 
 class Pet extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <div className="card">
         <div className="content">
@@ -13,7 +14,7 @@ class Pet extends React.Component {
             <span className="date">PET TYPE</span>
           </div>
           <div className="description">
-            <p>Age: PET AGE</p>
+            <p>Age:PET AGE</p>
             <p>Weight: PET WEIGHT</p>
           </div>
         </div>
