@@ -15,10 +15,6 @@ class App extends React.Component {
     };
   }
 
-  url = () => {
-    return "/api/pets/";
-  };
-
   onChangeType = event => {
     const { filters } = this.state;
     this.setState({
@@ -31,7 +27,7 @@ class App extends React.Component {
   };
 
   petFetch = pet => {
-    console.log("pet fetch")
+    console.log("pet fetch");
     return fetch(`/api/pets${pet}`)
       .then(resp => resp.json())
       .then(data => {
@@ -51,12 +47,11 @@ class App extends React.Component {
   };
 
   onAdoptPet = id => {
-    console.log("on Adopt Pet");
     this.setState({
       pets: this.state.pets.map(pet => {
         if (pet.id === id)
           return {
-            ...pet,
+            ...pet, // because there are a bunch of keys in the pet objects in the pets array
             isAdopted: true
           };
         else {

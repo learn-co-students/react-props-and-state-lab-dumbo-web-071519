@@ -6,12 +6,11 @@ class PetBrowser extends React.Component {
   onAdoptPet = () => {};
 
   renderPets = () => {
-    //map through and render a pet card component for each pet
-    //Warning: Pseudo code below
-    //pets => [{},{},{},{}]
-
+    // PASS DOWN PROPS FROM PARENT TO CHILDREN LIKE THIS
     return this.props.pets.map(pet => (
       <Pet onAdoptPet={this.props.onAdoptPet} pet={pet} />
+      //map through and render a pet card component for each pet
+    //pets => [{},{},{},{}]
     ));
   };
   render() {
